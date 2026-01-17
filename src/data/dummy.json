@@ -1,0 +1,64 @@
+{
+  "classes": [
+    {
+      "id": "big-data-a",
+      "name": "Big Data A",
+      "room": "Lab 2",
+      "schedule": [
+        { "day": 1, "start": "08:00", "end": "10:00" },
+        { "day": 3, "start": "08:00", "end": "10:00" }
+      ]
+    },
+    {
+      "id": "big-data-b",
+      "name": "Big Data B",
+      "room": "Lab 3",
+      "schedule": [
+        { "day": 2, "start": "10:30", "end": "12:00" },
+        { "day": 4, "start": "10:30", "end": "12:00" }
+      ]
+    },
+    {
+      "id": "data-mining",
+      "name": "Data Mining",
+      "room": "R. 304",
+      "schedule": [
+        { "day": 5, "start": "13:00", "end": "15:00" }
+      ]
+    }
+  ],
+  "checkins": [
+    {
+      "id": "c-001",
+      "class_id": "big-data-a",
+      "name": "Arizal",
+      "ts": "2026-01-15T08:05:12Z",
+      "sim": 0.86,
+      "image_url": ""
+    },
+    {
+      "id": "c-002",
+      "class_id": "big-data-a",
+      "name": "Salsa",
+      "ts": "2026-01-15T08:06:44Z",
+      "sim": 0.82,
+      "image_url": ""
+    },
+    {
+      "id": "c-003",
+      "class_id": "big-data-b",
+      "name": "Raka",
+      "ts": "2026-01-15T10:33:01Z",
+      "sim": 0.79,
+      "image_url": ""
+    },
+    {
+      "id": "c-004",
+      "class_id": "data-mining",
+      "name": "Dinda",
+      "ts": "2026-01-15T13:02:31Z",
+      "sim": 0.9,
+      "image_url": ""
+    }
+  ]
+}
