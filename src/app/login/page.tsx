@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
+import { getSupabaseClient } from "@/lib/supabaseClient";
 
 const setCookie = (name: string, value: string, maxAgeSeconds: number) => {
   document.cookie = `${name}=${value}; Path=/; Max-Age=${maxAgeSeconds}; SameSite=Lax`;
@@ -21,6 +21,12 @@ export default function LoginPage() {
     event.preventDefault();
     setError("");
     setLoading(true);
+    const supabase = getSupabaseClient();
+    if (!supabase) {
+      setError("Supabase env belum diset.");
+      setLoading(false);
+      return;
+    }
     const { data, error: authError } = await supabase.auth.signInWithPassword({
       email,
       password,
