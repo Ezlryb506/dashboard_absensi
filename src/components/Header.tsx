@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -12,21 +12,21 @@ export default function Header() {
         </div>
 
         <div className="hidden items-center gap-8 text-sm font-medium md:flex">
-          <a className="text-slate-500 transition-colors hover:text-[#00778a]" href="/">
+          <Link className="text-slate-500 transition-colors hover:text-[#00778a]" href="/">
             Monitor
-          </a>
-          <a className="text-slate-500 transition-colors hover:text-[#00778a]" href="/classes">
+          </Link>
+          <Link className="text-slate-500 transition-colors hover:text-[#00778a]" href="/classes">
             Classes
-          </a>
-          <a className="text-slate-500 transition-colors hover:text-[#00778a]" href="/students">
+          </Link>
+          <Link className="text-slate-500 transition-colors hover:text-[#00778a]" href="/students">
             Students
-          </a>
-          <a className="text-slate-500 transition-colors hover:text-[#00778a]" href="#">
+          </Link>
+          <Link className="text-slate-500 transition-colors hover:text-[#00778a]" href="#">
             Faculty
-          </a>
-          <a className="text-slate-500 transition-colors hover:text-[#00778a]" href="#">
+          </Link>
+          <Link className="text-slate-500 transition-colors hover:text-[#00778a]" href="#">
             Reports
-          </a>
+          </Link>
         </div>
 
         <div className="flex items-center gap-4">

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const supabaseFetch = async <T>(path: string, init?: RequestInit) => {
+const supabaseFetch = async (path: string, init?: RequestInit) => {
   const url = (process.env.SUPABASE_URL || "").replace(/\/$/, "");
   const key = process.env.SUPABASE_SERVICE_KEY || "";
   if (!url || !key) {
@@ -361,7 +361,7 @@ export async function POST(req: NextRequest) {
       );
     }
     return NextResponse.json(await parseJsonOrNull(res));
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "insert failed" }, { status: 500 });
   }
 }
@@ -448,7 +448,7 @@ export async function PUT(req: NextRequest) {
       );
     }
     return NextResponse.json(await parseJsonOrNull(res));
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "update failed" }, { status: 500 });
   }
 }
@@ -510,7 +510,7 @@ export async function DELETE(req: NextRequest) {
     }
     const payload = await parseJsonOrNull(res);
     return NextResponse.json(payload ?? { ok: true });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "delete failed" }, { status: 500 });
   }
 }

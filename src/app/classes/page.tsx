@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -113,13 +112,14 @@ export default function ClassesAdmin() {
       });
       setError("");
       setLoading(false);
-    } catch (err) {
+    } catch {
       setError("Failed to fetch data.");
       setLoading(false);
     }
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     load();
   }, []);
 
@@ -131,6 +131,7 @@ export default function ClassesAdmin() {
         end_at: toLocalInputValue(sess.end_at),
       };
     });
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSessionEdits(next);
   }, [data.classSessions]);
 
@@ -150,7 +151,7 @@ export default function ClassesAdmin() {
         return null;
       }
       return res.json().catch(() => ({}));
-    } catch (err) {
+    } catch {
       showNotice("error", "Network error. Please try again.");
       return null;
     }

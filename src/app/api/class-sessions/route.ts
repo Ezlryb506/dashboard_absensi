@@ -47,7 +47,7 @@ export async function GET(req: NextRequest) {
       )}&order=session_no.asc`
     );
     return NextResponse.json(rows);
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "fetch failed" }, { status: 500 });
   }
 }

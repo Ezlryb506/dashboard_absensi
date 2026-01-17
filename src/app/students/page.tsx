@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Header from "@/components/Header";
 
 type StudentRow = {
@@ -71,14 +70,14 @@ export default function StudentsAdmin() {
     return map;
   }, [data.enrollments]);
 
-  const showNotice = (type: Notice["type"], message: string) => {
+  const showNotice = useCallback((type: Notice["type"], message: string) => {
     setNotice({ type, message });
     window.setTimeout(() => {
       setNotice((current) => (current?.message === message ? null : current));
     }, 4500);
-  };
+  }, []);
 
-  const requestJson = async (input: RequestInfo | URL, init?: RequestInit) => {
+  const requestJson = useCallback(async (input: RequestInfo | URL, init?: RequestInit) => {
     try {
       const res = await fetch(input, init);
       if (!res.ok) {
@@ -87,13 +86,13 @@ export default function StudentsAdmin() {
         return null;
       }
       return res.json().catch(() => ({}));
-    } catch (err) {
+    } catch {
       showNotice("error", "Network error. Please try again.");
       return null;
     }
-  };
+  }, [showNotice]);
 
-  const load = async () => {
+  const load = useCallback(async () => {
     const res = await requestJson("/api/admin/students", { cache: "no-store" });
     if (!res) {
       setLoading(false);
@@ -106,11 +105,12 @@ export default function StudentsAdmin() {
       classes: json.classes || [],
     });
     setLoading(false);
-  };
+  }, [requestJson]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     load();
-  }, []);
+  }, [load]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

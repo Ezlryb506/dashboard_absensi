@@ -49,7 +49,7 @@ export async function GET(req: NextRequest) {
       }>
     >(query);
     return NextResponse.json(rows);
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "fetch failed" }, { status: 500 });
   }
 }

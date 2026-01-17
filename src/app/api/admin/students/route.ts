@@ -41,7 +41,7 @@ export async function GET() {
       `${classesTable}?select=id,name&order=name.asc`
     );
     return NextResponse.json({ students, enrollments, classes });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "fetch failed" }, { status: 500 });
   }
 }
@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(payload),
     });
     return NextResponse.json(res);
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "insert failed" }, { status: 500 });
   }
 }
@@ -105,7 +105,7 @@ export async function PUT(req: NextRequest) {
       }),
     });
     return NextResponse.json(res);
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "update failed" }, { status: 500 });
   }
 }
@@ -131,7 +131,7 @@ export async function DELETE(req: NextRequest) {
       method: "DELETE",
     });
     return NextResponse.json(res);
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: "delete failed" }, { status: 500 });
   }
 }
